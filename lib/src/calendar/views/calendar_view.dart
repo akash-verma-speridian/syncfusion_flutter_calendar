@@ -8621,83 +8621,78 @@ class _CalendarViewState extends State<_CalendarView>
               )),
             ],
           )),
-      // Positioned(
-      //     top: viewHeaderHeight + timeLabelSize,
-      //     left: 0,
-      //     right: 0,
-      //     bottom: 0,
-      //     child: Scrollbar(
-      //       controller: _scrollController,
-      //       thumbVisibility: !widget.isMobilePlatform,
-      //       child: ListView(
-      //           padding: EdgeInsets.zero,
-      //           controller: _scrollController,
-      //           scrollDirection: Axis.horizontal,
-      //           physics: const _CustomNeverScrollableScrollPhysics(),
-      //           children: <Widget>[
-      //             SizedBox(
-      //                 width: width,
-      //                 child: Stack(children: <Widget>[
-      //                   Scrollbar(
-      //                       controller: _timelineViewVerticalScrollController,
-      //                       thumbVisibility: !widget.isMobilePlatform,
-      //                       child: ListView(
-      //                           padding: EdgeInsets.zero,
-      //                           controller:
-      //                               _timelineViewVerticalScrollController,
-      //                           physics: isResourceEnabled
-      //                               ? const ClampingScrollPhysics()
-      //                               : const NeverScrollableScrollPhysics(),
-      //                           children: <Widget>[
-      //                             Stack(children: <Widget>[
-      //                               RepaintBoundary(
-      //                                   child: _CalendarMultiChildContainer(
-      //                                 width: width,
-      //                                 height: height,
-      //                                 children: <Widget>[
-      //                                   RepaintBoundary(
-      //                                       child: TimelineWidget(
-      //                                           _horizontalLinesCount!,
-      //                                           widget.visibleDates,
-      //                                           widget.calendar
-      //                                               .timeSlotViewSettings,
-      //                                           _timeIntervalHeight,
-      //                                           widget.calendar.cellBorderColor,
-      //                                           _isRTL,
-      //                                           widget.calendarTheme,
-      //                                           _calendarCellNotifier,
-      //                                           _scrollController!,
-      //                                           widget.regions,
-      //                                           resourceItemHeight,
-      //                                           widget.resourceCollection,
-      //                                           widget.textScaleFactor,
-      //                                           widget.isMobilePlatform,
-      //                                           widget
-      //                                               .calendar.timeRegionBuilder,
-      //                                           width,
-      //                                           height,
-      //                                           widget.minDate,
-      //                                           widget.maxDate,
-      //                                           widget.blackoutDates)),
-      //                                   RepaintBoundary(
-      //                                       child: _addAppointmentPainter(width,
-      //                                           height, resourceItemHeight)),
-      //                                 ],
-      //                               )),
-      //                               RepaintBoundary(
-      //                                 child: CustomPaint(
-      //                                   painter: _addSelectionView(
-      //                                       resourceItemHeight),
-      //                                   size: Size(width, height),
-      //                                 ),
-      //                               ),
-      //                               _getCurrentTimeIndicator(
-      //                                   timeLabelSize, width, height, true),
-      //                             ]),
-      //                           ])),
-      //                 ])),
-      //           ]),
-      //     )),
+      Positioned(
+          top: viewHeaderHeight + timeLabelSize,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          child: Scrollbar(
+            controller: _scrollController,
+            thumbVisibility: !widget.isMobilePlatform,
+            child: ListView(
+                padding: EdgeInsets.zero,
+                controller: _scrollController,
+                scrollDirection: Axis.horizontal,
+                physics: const _CustomNeverScrollableScrollPhysics(),
+                children: <Widget>[
+                  SizedBox(
+                      width: width,
+                      child: Stack(children: <Widget>[
+                        ListView(
+                            padding: EdgeInsets.zero,
+                            controller: _timelineViewVerticalScrollController,
+                            physics: isResourceEnabled
+                                ? const ClampingScrollPhysics()
+                                : const NeverScrollableScrollPhysics(),
+                            children: <Widget>[
+                              Stack(children: <Widget>[
+                                RepaintBoundary(
+                                    child: _CalendarMultiChildContainer(
+                                  width: width,
+                                  height: height,
+                                  children: <Widget>[
+                                    RepaintBoundary(
+                                        child: TimelineWidget(
+                                            _horizontalLinesCount!,
+                                            widget.visibleDates,
+                                            widget
+                                                .calendar.timeSlotViewSettings,
+                                            _timeIntervalHeight,
+                                            widget.calendar.cellBorderColor,
+                                            _isRTL,
+                                            widget.calendarTheme,
+                                            _calendarCellNotifier,
+                                            _scrollController!,
+                                            widget.regions,
+                                            resourceItemHeight,
+                                            widget.resourceCollection,
+                                            widget.textScaleFactor,
+                                            widget.isMobilePlatform,
+                                            widget.calendar.timeRegionBuilder,
+                                            width,
+                                            height,
+                                            widget.minDate,
+                                            widget.maxDate,
+                                            widget.blackoutDates)),
+                                    RepaintBoundary(
+                                        child: _addAppointmentPainter(
+                                            width, height, resourceItemHeight)),
+                                  ],
+                                )),
+                                RepaintBoundary(
+                                  child: CustomPaint(
+                                    painter:
+                                        _addSelectionView(resourceItemHeight),
+                                    size: Size(width, height),
+                                  ),
+                                ),
+                                _getCurrentTimeIndicator(
+                                    timeLabelSize, width, height, true),
+                              ]),
+                            ]),
+                      ])),
+                ]),
+          )),
     ]);
   }
 
