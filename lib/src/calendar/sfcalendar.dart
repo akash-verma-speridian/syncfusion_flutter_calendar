@@ -8236,28 +8236,28 @@ class _SfCalendarState extends State<SfCalendar>
     final ScrollController calendarViewPopupScrollController =
         ScrollController(initialScrollOffset: scrollPosition);
     return Positioned(
-      top: widget.headerHeight,
-      left: left,
-      height: height,
-      width: width,
-      child: _PopupWidget(
-        alignment: popupAlignment,
-        child: Container(
-          padding: EdgeInsets.zero,
-          decoration: BoxDecoration(
-            color: _calendarTheme.brightness == Brightness.dark
-                ? Colors.grey[850]
-                : Colors.white,
-            boxShadow: kElevationToShadow[6],
-            borderRadius: BorderRadius.circular(2.0),
-          ),
-          child: const Material(
-            type: MaterialType.transparency,
-            child: SizedBox(),
-          ),
-        ),
-      ),
-    );
+        top: widget.headerHeight,
+        left: left,
+        height: height,
+        width: width,
+        child: _PopupWidget(
+            alignment: popupAlignment,
+            child: Container(
+                padding: EdgeInsets.zero,
+                decoration: BoxDecoration(
+                  color: _calendarTheme.brightness == Brightness.dark
+                      ? Colors.grey[850]
+                      : Colors.white,
+                  boxShadow: kElevationToShadow[6],
+                  borderRadius: BorderRadius.circular(2.0),
+                ),
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: ListView(
+                      padding: EdgeInsets.zero,
+                      controller: calendarViewPopupScrollController,
+                      children: children),
+                ))));
   }
 
   /// Adds the resource panel on the left side of the view, if the resource
