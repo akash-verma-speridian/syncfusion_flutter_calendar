@@ -8665,7 +8665,7 @@ class _SfCalendarState extends State<SfCalendar>
                 decoration: _isMobilePlatform
                     ? BoxDecoration(
                         color: _calendarTheme.brightness == Brightness.dark
-                            ? Colors.pink
+                            ? Colors.grey[850]
                             : Colors.white,
                         boxShadow: const <BoxShadow>[
                           BoxShadow(
@@ -8676,7 +8676,7 @@ class _SfCalendarState extends State<SfCalendar>
                       )
                     : BoxDecoration(
                         color: _calendarTheme.brightness == Brightness.dark
-                            ? Colors.pink
+                            ? Colors.grey[850]
                             : Colors.white,
                         boxShadow: kElevationToShadow[6],
                         borderRadius: BorderRadius.circular(2.0),
