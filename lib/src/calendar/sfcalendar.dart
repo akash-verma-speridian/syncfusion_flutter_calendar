@@ -8245,7 +8245,7 @@ class _SfCalendarState extends State<SfCalendar>
                 padding: EdgeInsets.zero,
                 decoration: BoxDecoration(
                   color: _calendarTheme.brightness == Brightness.dark
-                      ? Colors.grey[850]
+                      ? Colors.white
                       : Colors.white,
                   boxShadow: kElevationToShadow[6],
                   borderRadius: BorderRadius.circular(2.0),
