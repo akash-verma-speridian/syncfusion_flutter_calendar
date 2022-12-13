@@ -8232,6 +8232,7 @@ class _SfCalendarState extends State<SfCalendar>
           : maxScrollPosition - height;
     }
 
+    final bool showScrollbar = totalHeight > height;
     final ScrollController calendarViewPopupScrollController =
         ScrollController(initialScrollOffset: scrollPosition);
     return Positioned(
@@ -8252,10 +8253,13 @@ class _SfCalendarState extends State<SfCalendar>
                 ),
                 child: Material(
                   type: MaterialType.transparency,
-                  child: ListView(
-                      padding: EdgeInsets.zero,
+                  child: Scrollbar(
+                      thumbVisibility: showScrollbar,
                       controller: calendarViewPopupScrollController,
-                      children: children),
+                      child: ListView(
+                          padding: EdgeInsets.zero,
+                          controller: calendarViewPopupScrollController,
+                          children: children)),
                 ))));
   }
 
@@ -8328,9 +8332,6 @@ class _SfCalendarState extends State<SfCalendar>
                       behavior: ScrollConfiguration.of(context)
                           .copyWith(scrollbars: false),
                       child: ListView(
-                        padding: EdgeInsets.zero,
-                        physics: const ClampingScrollPhysics(),
-                        controller: _resourcePanelScrollController,
                         children: [
                           ResourceViewWidget(
                               _resourceCollection,
@@ -8347,6 +8348,9 @@ class _SfCalendarState extends State<SfCalendar>
                               panelHeight,
                               widget.resourceViewHeaderBuilder)
                         ],
+                        padding: EdgeInsets.zero,
+                        physics: const ClampingScrollPhysics(),
+                        controller: _resourcePanelScrollController,
                       ),
                     ),
                     onTapUp: (TapUpDetails details) {
